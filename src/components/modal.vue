@@ -137,9 +137,7 @@ label{
 }
 
 
-    .personalizar-select{
-     
-    }
+    
     .personalizar-option{
        
         
