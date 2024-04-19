@@ -20,7 +20,7 @@
         <input type="checkbox" v-model="tod.tarefConcluir">
         <div>{{ tod.name }}</div>
         <div>{{ tod.selctOption }}</div>
-        <button @click='removeTodo(tod)'>Delete</button>
+        <button @click='removeTodo(tod)' class="applist__delete"><i class="ri-delete-bin-6-line"></i></button>
        </div>
       </div>
      </div>
@@ -97,9 +97,13 @@ export default {
       .applist__btn{
         width: 100%;
         outline: none;
+        color: white;
         padding: 1rem;
         border: none;
         background-color: #34D444;
+      }
+      .applist__btn:hover{
+        background-color: #0fa81f;
       }
       .applist__search{
         display: flex;
@@ -112,9 +116,10 @@ export default {
       padding: .2rem;
      }
      .applist__btnpesq{
-      background-color: red;
+      background-color:black;
+      color: white;
       border-radius:  10px 40px 40px 10px;
-      padding: .2rem;
+      padding: .25rem;
      }
      .applist__search i{
         background-color: white;
@@ -141,13 +146,23 @@ export default {
      .applist__todcard{
       
       padding: 1.2rem;
-      width: 50%;
-      background-color: red;
+      width: 100%;
+      border-radius: 1rem;
+      min-width: 300px;
+      background-color: #D9D9D9;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      
-      
-      
+    
      }
-</style>
+     .applist__delete{
+      background-color: #FB38FF;
+      padding-block: .4rem;
+      width: 4rem;
+     }
+     .applist__delete i{
+      font-size: 1.3rem;
+      
+      color:black;
+     }
+    </style>

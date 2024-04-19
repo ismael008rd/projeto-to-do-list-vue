@@ -3,14 +3,15 @@
 <template>
    <div class="modal" v-if="isOpen" >
      <div class="modal__for">
-     <button @click="$emit('close')" class="modal__btnfechar">X</button>
+     <button @click="$emit('close')" class="modal__btnfechar"><i class="ri-close-large-line"></i></button>
         <form @submit.prevent="addTarefa">
             <label>Digite sua tarefa</label>
             <input type="text" class="text-input" v-model="nameTarefa" placeholder="Digite uma tarefa">
-             <select name="select" class="for__select" v-model="selectOpition">
-                <option value="Tecnologias">Tecnologias</option>
-                <option value="saúde" selected>Saúde</option>
-                <option value="Outros">Outros</option>
+            <label>Escolha uma tarefa</label>
+             <select name="select" class="for__select personalizar-select" v-model="selectOpition" >
+                <option value="Tecnologias" selected="selected" class="personalizar-option">Tecnologias</option>
+                <option value="saúde"  class="personalizar-option">Saúde</option>
+                <option value="Outros" class="personalizar-option">Outros</option>
              </select>
           
              <button type="submit" class="modal__btncriar" >Criar Tarefa</button>
@@ -48,7 +49,7 @@ export default{
   },
   methods:{
     addTarefa(){
-        if(nameTarefa.value=='' && selectOpition.value==''){
+        if(nameTarefa.value=='' || selectOpition.value==''){
             console.log('digitar algo imorali')
             return
         }
@@ -89,12 +90,13 @@ export default{
     width: 300px;
     padding: 2rem;
     height: 400px;
-    background-color: rgb(25, 17, 17);
+    background-color: rgb(200, 239, 233);
 }
 
 .for__select,
 .text-input{
-    padding: .8rem;
+    padding: .4rem;
+    background-color: #D9D9D9;
 }
 .for__select{
     
@@ -106,15 +108,48 @@ form{
     flex-direction: column;
 }
 
+label{
+    color: black;
+}
+
 .modal__btncriar{
     margin-top: 3rem;
     width: 100%;
     padding: .5rem;
-    background-color: red;
+    background-color:#CB5A82;
+    color: white;
+    transition: .2s;
+}
+.modal__btncriar:hover{
+    background-color: #ba2c5e;
 }
 .modal__btnfechar{
     top: 1.2rem;
     right: 1.15rem;
+    padding: .3rem;
+    border-radius: .3rem;
     position: absolute;
 }
+
+.modal__btnfechar:hover{
+    background-color:  #ba2c5e;
+    color: white;
+}
+
+
+    .personalizar-select{
+     
+    }
+    .personalizar-option{
+       
+        
+        background: rgb(228, 213, 213);
+        color: #000000;
+        
+
+    }  
+    .personalizar-option:hover{
+        background: #fff;
+        color: black;
+    }
 </style>
