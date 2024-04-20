@@ -90,18 +90,15 @@ export default{
     width: 300px;
     padding: 2rem;
     height: 400px;
-    background-color: rgb(200, 239, 233);
+    background-color: rgb(175, 228, 221);
 }
 
 .for__select,
 .text-input{
     padding: .4rem;
-    background-color: #D9D9D9;
+    background-color: #9cb6fb;
 }
-.for__select{
-    
-    width: 300px;
-}
+
 form{
     display: flex;
     gap: 1rem;

@@ -8,9 +8,14 @@
      
     </div>
      <div class="applist__search">
-      <i class="ri-search-line"></i>
-       <input type="text" placeholder="Digite sua pesquisa">
-       <button class="applist__btnpesq">Search</button>
+      <div class="applist__iconepesqui">
+        <i class="ri-search-line"></i>
+      </div>
+    
+       <input type="text"v-model="nametodo" @input="seachMenu" placeholder="Digite sua pesquisa">
+      
+      
+       <button class="applist__btnpesq" @click="searChe" >Search</button>
        
      </div>
      <modal :isOpen="isModalOpen" @close="closeModal"></modal>
@@ -33,6 +38,9 @@ import {ref,computed, watch} from 'vue'
 import Modal from './components/modal.vue'
 import { todo } from './components/modal.vue'
 
+const nametodo=ref('')
+let t1,t2
+
 export default {
   components: {
     Modal,
@@ -46,6 +54,9 @@ export default {
     return {
        isModalOpen:false,
        todo,
+       nametodo,
+       t1,
+       t2
      
         
       }
@@ -62,9 +73,34 @@ export default {
       todo.value=todo.value.filter(t=>t!==element)
 
       console.log(todo)
-  }
   },
-
+  seachMenu(){
+    // console.log('digitando')
+    // console.log(nametodo.value)
+    const vertodocontent=todo.value.map((to,index)=>{
+       if(to.name.toLowerCase().includes(nametodo.value.toLowerCase())){
+       const namee= to.name
+       const selecteded= to.selctOption
+       return(
+       [ namee,
+        selecteded]
+       )
+       } ;
+  
+      
+   
+    
+    })
+    console.log(vertodocontent)
+  },
+  searChe(){
+    alert('em desenvolvimento meu nobre ')
+  }
+  
+  },
+  computed:{
+  
+  }
 
 }
  
@@ -77,6 +113,7 @@ export default {
 
 *{
   outline: none;
+  box-sizing: border-box;
   border: none;
 }
 
@@ -106,23 +143,34 @@ export default {
         background-color: #0fa81f;
       }
       .applist__search{
+        
         display: flex;
         margin-top: 2rem;
         justify-content: center;
-        widows: 300px;
+       
       }
+      .applist__iconepesqui{
+        width:5%;
+        display: flex;
+        justify-content: center;
+       background-color: #ddd;
+}
      .applist__search input{
-      width: 70%;
-      padding: .2rem;
+      width: 60%;
+      padding-block: .5rem;
      }
      .applist__btnpesq{
-      background-color:black;
+      width: auto;
+      background-color:rgb(43, 30, 139);
       color: white;
-      border-radius:  10px 40px 40px 10px;
-      padding: .25rem;
+      border-radius:  0px 40px 40px 0px;
+      padding-block: .5rem;
+     }
+     .applist__btnpesq:hover{
+      background-color: rgb(45, 27, 27);
      }
      .applist__search i{
-        background-color: white;
+        background-color: #ddd;
         color:black;
         padding: .2rem;
      }
@@ -165,4 +213,28 @@ export default {
       
       color:black;
      }
+     input[type="checkbox"]{
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      appearance: none;
+      border: 2px solid #1c0d0d;
+      width: 28px;
+      height: 28px;
+       
+     }
+     input:checked::before {
+      
+      appearance: none;
+      content: "\2713"; 
+      display: block;
+     width: 26px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px; 
+    color: #fff;
+    background-color: #007bff; 
+}
+    
     </style>
